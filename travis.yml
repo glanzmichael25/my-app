@@ -1,10 +1,15 @@
 language: node_js
 node_js:
-  - node
-deploy:                         
-  provider: s3                         
+    - 12.14.1
+install: yarn
+deploy:
+  skip_cleanup: true
+  provider: s3
   access_key_id: AKIAXIIWEG4X7EXSYJ7F
-  secret_access_key:
-   secure: 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
-  bucket: devops-travisci-bucket
-  acl: public_read
+  secret_access_key: nuIfXTziUK3Anw2CUJsqkH/x7TS7vAKvtkXQAaFp
+  bucket: 'devops-travisci-bucket'
+  acl: bucket_owner_full_control
+  region: us-west-2
+  on:
+    repo: glanzmichael25/my-app
+  local_dir: build
